@@ -5,6 +5,10 @@
 #ifndef RAYTRACER_UTILS_H
 #define RAYTRACER_UTILS_H
 
+#include <string>
+#include <cmath>
+#include <iostream>
+#include <list>
 #include "../utils/Vector3D.h"
 #include "../utils/Color.h"
 #include "../utils/Material.h"
