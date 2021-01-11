@@ -22,7 +22,7 @@ Vector3D Vector3D::operator/(const float & m) {
     return Vector3D(m/x, m/y, m/z);
 }
 
-friend Vector3D operator*(const float & m, Vector3D & p) {
+Vector3D operator*(const float & m, Vector3D & p) {
     return p*m;
 }
 
@@ -42,7 +42,7 @@ float Vector3D::dist(Vector3D p) {
     return sqrt((x-p.x)*(x-p.x) + (y-p.y)*(y-p.y) + (z-p.z)*(z-p.z));
 }
 
-ostream& operator<<(ostream& os, const Vector3D & v) {
+std::ostream& operator<<(std::ostream & os, const Vector3D & v) {
     os << "Vector3D(" << v.x << ", " << v.y << ", " << v.z << ")";
     return os;
 }
