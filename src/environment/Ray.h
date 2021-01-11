@@ -5,7 +5,7 @@
 #ifndef RAYTRACER_RAY_H
 #define RAYTRACER_RAY_H
 
-#include "Vector3D.h"
+#include "../utils/Vector3D.h"
 
 class Ray {
     public:
@@ -13,7 +13,7 @@ class Ray {
         Vector3D direction;
 
     public:
-        Ray(Point3D origin, Point3D direction) : origin(origin), direction(direction) {};
+        Ray(Point3D origin, Vector3D direction) : origin(origin), direction(direction.normalize()) {};
 };
 
 
