@@ -11,12 +11,15 @@ class Material {
     public:
         Color color;
         float shininess;
+        float Ka = 1, Kd = 1, Ks = 1;
 
     public:
         Material(Color color, float shininess) : color(color), shininess(shininess) {};
-        Material(unsigned char r, unsigned char g, unsigned char b, float shininess) : color(Color(r, g, b)), shininess(shininess) {};
-        Material(unsigned char c, float shininess) : color(Color(c)), shininess(shininess) {};
-        Material() : color(Color(0, 0, 0)), shininess(0) {};
+        Material(unsigned char r, unsigned char g, unsigned char b, float shininess) : Material(Color(r, g, b), shininess) {};
+        Material(unsigned char c, float shininess) : Material(Color(c), shininess) {};
+        Material() : Material(Color(255), 0) {};
+
+        friend std::ostream & operator<<(std::ostream &, const Material &);
 };
 
 

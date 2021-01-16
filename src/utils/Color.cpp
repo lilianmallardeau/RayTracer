@@ -3,3 +3,22 @@
 //
 
 #include "Color.h"
+
+Color Color::operator+(const Color & c) {
+    return Color(r+c.r, g+c.g, b+c.b);
+}
+
+Color Color::operator*(float m) {
+    m = m > 1 ? 1 : m;
+    m = m < 0 ? 0 : m;
+    return Color(m*r, m*g, m*b);
+}
+
+Color operator*(float m, Color c) {
+    return c*m;
+}
+
+std::ostream & operator<<(std::ostream & os, const Color & c) {
+    os << "Color(" << c.r << ", " << c.g << ", " << c.b << ")";
+    return os;
+}

@@ -33,4 +33,12 @@ add_executable(RayTracer
         src/utils/Material.h
         src/utils/Vector3D.cpp
         src/utils/Vector3D.h
+        src/environment/Light.cpp
+        src/environment/Light.h
+        src/objects/Plane.cpp
+        src/objects/Plane.h
         src/main.cpp)
+
+find_package(PNG REQUIRED)
+include_directories(${PNG_INCLUDE_DIR})
+target_link_libraries(RayTracer ${PNG_LIBRARY})

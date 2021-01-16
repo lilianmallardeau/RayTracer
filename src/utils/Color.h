@@ -5,6 +5,7 @@
 #ifndef RAYTRACER_COLOR_H
 #define RAYTRACER_COLOR_H
 
+#include <ostream>
 
 class Color {
     public:
@@ -12,8 +13,13 @@ class Color {
 
     public:
         Color(unsigned char r, unsigned char g, unsigned char b) : r(r), g(g), b(b) {};
-        Color(unsigned char c) : r(c), g(c), b(c) {};
-        Color() : r(0), g(0), b(0) {};
+        Color(unsigned char c) : Color(c, c, c) {};
+        Color() : Color(0) {};
+
+        Color operator+(const Color &);
+        Color operator*(float);
+        friend Color operator*(float, Color);
+        friend std::ostream & operator<<(std::ostream &, const Color &);
 };
 
 

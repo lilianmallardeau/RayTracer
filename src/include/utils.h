@@ -8,6 +8,7 @@
 #include <string>
 #include <cmath>
 #include <iostream>
+#include <ostream>
 #include <list>
 #include "../utils/Vector3D.h"
 #include "../utils/Color.h"

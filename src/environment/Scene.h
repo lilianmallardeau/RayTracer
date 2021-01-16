@@ -6,16 +6,23 @@
 #define RAYTRACER_SCENE_H
 
 #include "../include/utils.h"
+#include "../include/objects.h"
 #include "../include/environment.h"
 
 class Scene {
     public:
         Camera camera;
-        Objects[] objects;
-        Ray source;
+        std::list<Object*> objects;
+        Light light;
+        float brightness = 1;
+        Color background;
 
     public:
-        render(int width, int height, std::string filename);
+        Scene(Camera cam, Light light, Color bg) : camera(cam), light(light), background(bg) {};
+        Scene(Camera cam, Light light) : Scene(cam, light, Color(100)) {};
+        void render(int width, int height, std::string filename);
+        Color computePixelColor(Ray ray);
+        void addObject(Object * obj);
 };
 
 

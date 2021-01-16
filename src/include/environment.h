@@ -7,6 +7,7 @@
 
 #include "../environment/Ray.h"
 #include "../environment/Camera.h"
+#include "../environment/Light.h"
 #include "../environment/Scene.h"
 
 #endif //RAYTRACER_ENVIRONMENT_H
