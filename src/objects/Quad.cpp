@@ -28,5 +28,5 @@ Point3D Quad::get_intersect(Ray ray) {
 
 Vector3D Quad::get_normal(Ray ray) {
     Vector3D normal = Vector3D::cross(width, height).normalize();
-    return normal * ray.direction >= 0 ? normal : -normal;
+    return Plane(origin, normal).get_normal(ray);
 }

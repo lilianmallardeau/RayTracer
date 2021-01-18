@@ -27,7 +27,7 @@ class Scene {
         float brightness = 1;
 
         /** The maximum number of ray reflexions */
-        unsigned int depth = 1;
+        unsigned int depth = 4;
 
     public:
         Scene(Camera cam, Light light, Color bg) : camera(cam), light(light), background(bg) {};

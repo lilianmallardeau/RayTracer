@@ -17,5 +17,5 @@ Point3D Plane::get_intersect(Ray ray) {
 }
 
 Vector3D Plane::get_normal(Ray ray) {
-    return normal * ray.direction >= 0 ? normal : -normal;
+    return normal * ray.direction <= 0 ? normal : -normal;
 }

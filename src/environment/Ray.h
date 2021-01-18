@@ -6,9 +6,10 @@
 #define RAYTRACER_RAY_H
 
 #include "../include/utils.h"
-//#include "../include/objects.h"
-//class Object;
 
+/**
+ * Class for rays
+ */
 class Ray {
     public:
         /** Origin of the ray */
@@ -19,8 +20,6 @@ class Ray {
 
     public:
         Ray(Point3D origin, Vector3D direction) : origin(origin), direction(direction.normalize()) {};
-//        bool hit(Object obj);
-//        Point3D intersect(Object obj);
 
         friend std::ostream & operator<<(std::ostream &, const Ray &);
 };

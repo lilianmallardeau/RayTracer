@@ -10,6 +10,8 @@ A ray tracer in C++
 
 ### Compilation
 - build project: `make`
+- build examples: `make examples`
+- build documentation: `make doc`
 - clean binaries: `make clean`
 
 ### Run
