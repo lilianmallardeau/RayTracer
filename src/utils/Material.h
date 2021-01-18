@@ -9,8 +9,12 @@
 
 class Material {
     public:
+        /** The color of the object */
         Color color;
-        float shininess;
+
+        /** Shininess of the object: 0 = opaque, 1 = totally shiny */
+        float shininess = 0;
+
         float Ka = 1, Kd = 1, Ks = 1;
 
     public:

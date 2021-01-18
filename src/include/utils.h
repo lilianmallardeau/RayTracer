@@ -13,5 +13,7 @@
 #include "../utils/Vector3D.h"
 #include "../utils/Color.h"
 #include "../utils/Material.h"
+#include "../utils/MathTools.h"
+#include "../exceptions/exceptions.h"
 
 #endif //RAYTRACER_UTILS_H

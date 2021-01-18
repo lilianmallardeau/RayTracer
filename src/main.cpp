@@ -15,7 +15,7 @@ int main() {
 
     Sphere sphere(Point3D(0,0,3), 3);
     sphere.setColor(Color(0,0,255));
-    sphere.matter.Ka=1.7;
+    sphere.matter.Ka = 1.7;
 
     Quad quad(Point3D(0,0,6), Point3D(-0.5, 0, 1), Vector3D(-1, 1, 0));
     quad.setColor(Color(255, 0, 0));
@@ -37,9 +37,10 @@ int main() {
     Scene scene(cam, light);
 
     Material m;
+    m.shininess = 1;
 
     Plane plane(Point3D(0), Vector3D::k);
-    plane.matter.color = Color(100);
+    plane.setColor(Color(100));
     Quad square1(Point3D(-5, -5, 0), Vector3D(0, 10 ,0), Vector3D(0,0,10));
     Quad square2(Point3D(-5, 5 , 0), Vector3D(10, 0 ,0), Vector3D(0,0,10));
     Quad square3(Point3D(5 , 5 , 0), Vector3D(0, -10,0), Vector3D(0,0,10));
@@ -54,7 +55,7 @@ int main() {
     sphere.matter = m;
     sphere.setColor(Color(0,0,255));
 
-    scene.addObject(&plane);
+    //scene.addObject(&plane);
     scene.addObject(&square1);
     scene.addObject(&square2);
     scene.addObject(&square3);

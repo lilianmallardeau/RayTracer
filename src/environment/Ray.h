@@ -11,11 +11,13 @@
 
 class Ray {
     public:
+        /** Origin of the ray */
         Point3D origin;
+
+        /** Direction of the ray */
         Vector3D direction;
 
     public:
-        //TODO
         Ray(Point3D origin, Vector3D direction) : origin(origin), direction(direction.normalize()) {};
 //        bool hit(Object obj);
 //        Point3D intersect(Object obj);

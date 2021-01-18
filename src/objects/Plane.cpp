@@ -16,10 +16,6 @@ Point3D Plane::get_intersect(Ray ray) {
     return ray.origin + t*ray.direction;
 }
 
-Ray Plane::reflect(Ray ray) {
-    return Ray(get_intersect(ray), ray.direction + 2 * (ray.direction*normal) * normal / pow(normal.norm(), 2));
-}
-
-Vector3D Plane::get_normal(Point3D p) {
-    return normal;
+Vector3D Plane::get_normal(Ray ray) {
+    return normal * ray.direction >= 0 ? normal : -normal;
 }

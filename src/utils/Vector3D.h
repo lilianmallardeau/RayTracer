@@ -7,9 +7,15 @@
 
 #include <iostream>
 
+/**
+ * Class for vectors used in the ray tracer
+ */
 class Vector3D {
     public:
+        /** Coordinates of the vector */
         float x, y, z;
+
+        /** Base unit vectors of the 3D space */
         static const Vector3D i, j, k;
 
     public:
@@ -32,13 +38,48 @@ class Vector3D {
         bool operator!=(const Vector3D &);
         friend std::ostream& operator<<(std::ostream &, const Vector3D &);
 
+        /**
+         * Computes the norm of a vector
+         * @return the norm of the vector
+         */
         float norm();
+
+        /**
+         * Normalizes the vector
+         * @return the vector divided by its norm
+         */
         Vector3D normalize();
+
+        /**
+         * Computes the distance between 2 vectors
+         * @param p the vector to compute the distance from
+         * @return the distance between the vector and p
+         */
         float dist(Vector3D p);
+
+        /**
+         * Checks if 2 vectors are orthogonal
+         * @param p vector to check if it is orthogonal with *this
+         * @return true if the 2 vectors are orthogonal, false otherwise
+         */
         bool normal(Vector3D p);
-        static Vector3D cross(Vector3D, Vector3D);
-        //static bool colinear(Vector3D, Vector3D);
+
+        /**
+         * Computes the cross product between two vectors
+         * @param p1 first vector
+         * @param p2 second vector
+         * @return the cross product p1 x p2
+         */
+        static Vector3D cross(Vector3D p1, Vector3D p2);
+
+        /**
+         * Computes the cross product between two vectors
+         * @param p vector to cross product with
+         * @return the cross product *this x p
+         */
         Vector3D cross(Vector3D p);
+
+        //static bool colinear(Vector3D, Vector3D);
 };
 
 

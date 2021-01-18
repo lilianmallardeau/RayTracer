@@ -17,10 +17,7 @@ class Quad : public Object {
 
         bool is_hit(Ray ray) override;
         Point3D get_intersect(Ray ray) override;
-        Ray reflect(Ray ray) override;
-        Vector3D get_normal(Point3D p) override;
-
-        float orient(Vector3D, Vector3D, Vector3D, Vector3D);
+        Vector3D get_normal(Ray ray) override;
 };
 
 

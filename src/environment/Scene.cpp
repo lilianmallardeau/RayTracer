@@ -4,7 +4,6 @@
 
 #include "Scene.h"
 #include <png++/png.hpp>
-#include <unistd.h>
 
 void Scene::render(int width, int height, std::string filename) {
     Point3D TopLeft = camera.getTopLeftCorner();
@@ -29,22 +28,22 @@ void Scene::render(int width, int height, std::string filename) {
     image.write(filename);
 }
 
-Color Scene::computePixelColor(Ray ray) {
+Color Scene::computePixelColor(Ray ray, unsigned int depth) {
     Object* intersected_obj;
-    float dist = -1;
+    float dist = INFINITY;
     for (auto obj : objects) {
         if (obj->is_hit(ray)) {
-            float obj_dist = obj->get_intersect(ray).dist(ray.origin);
-            if (obj_dist < dist || dist == -1) {
+            float obj_dist = obj->compute_hit_dist(ray);
+            if (obj_dist < dist) {
                 dist = obj_dist;
                 intersected_obj = obj;
             }
         }
     }
-    if (dist == -1)
+    if (dist == INFINITY)
         return background;
     else
-        return intersected_obj->compute_color(ray, light, brightness, objects);
+        return intersected_obj->compute_color(ray, *this, depth);
 }
 
 void Scene::addObject(Object * obj) {

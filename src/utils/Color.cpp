@@ -9,7 +9,7 @@ Color Color::operator+(const Color & c) {
 }
 
 Color Color::operator*(float m) {
-    m = m > 1 ? 1 : m;
+    m = m > 1 ? 1 : m; // TODO
     m = m < 0 ? 0 : m;
     return Color(m*r, m*g, m*b);
 }

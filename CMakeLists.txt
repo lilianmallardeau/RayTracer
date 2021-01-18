@@ -37,6 +37,9 @@ add_executable(RayTracer
         src/environment/Light.h
         src/objects/Plane.cpp
         src/objects/Plane.h
+        src/exceptions/exceptions.h
+        src/utils/MathTools.cpp
+        src/utils/MathTools.h
         src/main.cpp)
 
 find_package(PNG REQUIRED)

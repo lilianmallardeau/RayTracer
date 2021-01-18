@@ -7,6 +7,9 @@
 
 #include <ostream>
 
+/**
+ * Class for colors
+ */
 class Color {
     public:
         unsigned char r, g, b;

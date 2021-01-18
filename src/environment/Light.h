@@ -7,9 +7,16 @@
 
 #include "../include/utils.h"
 
+/**
+ * Class for light objects
+ */
 class Light {
     public:
+        /** Position of the light */
         Point3D position;
+
+        /** Intensity of the light */
+        float intensity = 1;
 
     public:
         Light(Point3D position) : position(position) {};
