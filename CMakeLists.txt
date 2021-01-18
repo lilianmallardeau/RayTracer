@@ -40,6 +40,8 @@ add_executable(RayTracer
         src/exceptions/exceptions.h
         src/utils/MathTools.cpp
         src/utils/MathTools.h
+        src/objects/Cube.cpp
+        src/objects/Cube.h
         src/main.cpp)
 
 find_package(PNG REQUIRED)

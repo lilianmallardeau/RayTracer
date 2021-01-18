@@ -9,5 +9,6 @@
 #include "../objects/Sphere.h"
 #include "../objects/Quad.h"
 #include "../objects/Plane.h"
+#include "../objects/Cube.h"
 
 #endif //RAYTRACER_OBJECTS_H
