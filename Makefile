@@ -5,7 +5,7 @@ OBJECTS = $(shell find src/ -type f -name '*.cpp' | grep -v 'main.cpp' | sed 's/
 EXAMPLES = $(shell ls examples/example*.cpp | sed 's/.cpp//g')
 TARGET = RayTracer
 
-$(TARGET): main.cpp $(OBJECTS)
+$(TARGET): src/main.cpp $(OBJECTS)
 	$(CC) $(CFLAGS) $^ -o $@ $(LIBS)
 
 %.o : %.cpp %.h
