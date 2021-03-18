@@ -51,3 +51,15 @@ Quad Cube::get_intersected_face(Ray ray) {
         throw NoIntersectionException();
     return *intersected_face;
 }
+
+json Cube::toJSON() {
+    json j = Object::toJSON();
+    j.merge_patch({
+        {"object", "cube"},
+        {"origin", origin.toJSON()},
+        {"width", width.toJSON()},
+        {"height", height.toJSON()},
+        {"length", length.toJSON()}
+    });
+    return j;
+}

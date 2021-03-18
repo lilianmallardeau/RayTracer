@@ -3,3 +3,10 @@
 //
 
 #include "Light.h"
+
+json Light::toJSON() {
+    return {
+        {"position", position.toJSON()},
+        {"intensity", intensity}
+    };
+}

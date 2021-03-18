@@ -14,10 +14,18 @@ class Quad : public Object {
 
     public:
         Quad(Point3D origin, Vector3D width, Vector3D height) : origin(origin), width(width), height(height) {};
+        Quad(json j) : Quad(j["origin"], j["width"], j["height"]) {
+            initFromJSON(j);
+        };
+        Quad(std::string s) : Quad(json::parse(s)) {};
+
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Quad, name, matter, origin, width, height);
 
         bool is_hit(Ray ray) override;
         Point3D get_intersect(Ray ray) override;
         Vector3D get_normal(Ray ray) override;
+
+        json toJSON() override;
 };
 
 

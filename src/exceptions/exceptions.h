@@ -17,4 +17,15 @@ class NoIntersectionException : public std::exception {
 };
 
 
+/**
+ * Exception thrown when trying to build object from JSON which has unknown "object" attribute
+ */
+ // TODO: UnknownObjectException could take object type name (and update in Object::fromJSON)
+class UnknownObjectException : public std::exception {
+    const char * what() const noexcept override {
+        return "Unknown object type";
+    }
+};
+
+
 #endif //RAYTRACER_EXCEPTIONS_H

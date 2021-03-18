@@ -10,7 +10,7 @@
 /**
  * Class for cameras objects
  */
-class Camera {
+class Camera : public Serializable {
     public:
         /** Position of the camera */
         Point3D position;
@@ -37,6 +37,14 @@ class Camera {
         Camera(Point3D position, Point3D direction, Vector3D up, Vector3D right) : position(position), direction((direction-position).normalize()), up(up.normalize()), right(right.normalize()) {};
         Camera(Point3D position, Point3D direction, Vector3D up) : Camera(position, direction, up, Vector3D::cross(direction-position, up)) {};
         Camera(Point3D position, Point3D direction) : Camera(position, direction, Vector3D::k) {}
+        Camera(json j) : Camera(j["position"], j["direction"], j["up"], j["right"]) {
+            screen_dist = j["screen_dist"];
+            width = j["width"];
+            height = j["height"];
+        };
+        Camera(std::string s) : Camera(json::parse(s)) {};
+
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Camera, position, direction, up, right, screen_dist, width, height);
 
         Point3D getScreenCenter();
         Point3D getTopLeftCorner();
@@ -45,6 +53,8 @@ class Camera {
         Point3D getBottomRightCorner();
 
         friend std::ostream & operator<<(std::ostream &, const Camera &);
+
+        json toJSON() override;
 };
 
 

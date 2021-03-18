@@ -15,10 +15,18 @@ class Plane : public Object {
 
     public:
         Plane(Point3D point, Vector3D normal) : point(point), normal(normal.normalize()) {};
+        Plane(json j) : Plane(j["point"], j["normal"]) {
+            initFromJSON(j);
+        };
+        Plane(std::string s) : Plane(json::parse(s)) {};
+
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Plane, name, matter, point, normal);
 
         bool is_hit(Ray ray) override;
         Point3D get_intersect(Ray ray) override;
         Vector3D get_normal(Ray ray) override;
+
+        json toJSON() override;
 };
 
 

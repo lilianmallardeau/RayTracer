@@ -49,3 +49,18 @@ Color Scene::computePixelColor(Ray ray, unsigned int depth) {
 void Scene::addObject(Object * obj) {
     objects.push_back(obj);
 }
+
+json Scene::toJSON() {
+    json json_objects;
+    for (auto obj : objects) {
+        json_objects.push_back(obj->toJSON());
+    }
+    return {
+        {"camera", camera.toJSON()},
+        {"light", light.toJSON()},
+        {"objects", json_objects},
+        {"background", background.toJSON()},
+        {"brightness", brightness},
+        {"depth", depth}
+    };
+}

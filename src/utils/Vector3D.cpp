@@ -83,3 +83,7 @@ Vector3D Vector3D::cross(Vector3D p1, Vector3D p2) {
 Vector3D Vector3D::cross(Vector3D p) {
     return Vector3D::cross(*this, p);
 }
+
+json Vector3D::toJSON() {
+    return {{"x", x}, {"y", y}, {"z", z}};
+}

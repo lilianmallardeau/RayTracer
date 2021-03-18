@@ -5,12 +5,12 @@
 #ifndef RAYTRACER_VECTOR3D_H
 #define RAYTRACER_VECTOR3D_H
 
-#include <iostream>
+#include "Serializable.h"
 
 /**
  * Class for vectors used in the ray tracer
  */
-class Vector3D {
+class Vector3D : public Serializable {
     public:
         /** Coordinates of the vector */
         float x, y, z;
@@ -24,6 +24,10 @@ class Vector3D {
         Vector3D() : Vector3D(0, 0, 0) {};
         Vector3D(const Vector3D & p) : Vector3D(p.x, p.y, p.z) {};
         Vector3D(Vector3D & p1, Vector3D & p2) : Vector3D(p2.x - p1.x, p2.y - p1.y, p2.z - p1.z) {};
+        Vector3D(json j) : Vector3D(j["x"], j["y"], j["z"]) {};
+        Vector3D(std::string s) : Vector3D(json::parse(s)) {};
+
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Vector3D, x, y, z);
 
         Vector3D operator+(const Vector3D &);
         Vector3D operator-(const Vector3D &);
@@ -80,6 +84,8 @@ class Vector3D {
         Vector3D cross(Vector3D p);
 
         //static bool colinear(Vector3D, Vector3D);
+
+        json toJSON() override;
 };
 
 

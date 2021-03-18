@@ -10,7 +10,7 @@
 /**
  * Class for light objects
  */
-class Light {
+class Light : public Serializable {
     public:
         /** Position of the light */
         Point3D position;
@@ -20,7 +20,14 @@ class Light {
 
     public:
         Light(Point3D position) : position(position) {};
+        Light(Point3D position, float intensity) : position(position), intensity(intensity) {};
         Light(float x, float y, float z) : Light(Point3D(x, y, z)) {}
+        Light(json j) : Light(j["position"], j["intensity"]) {};
+        Light(std::string s) : Light(json::parse(s)) {};
+
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Light, position, intensity);
+
+        json toJSON() override;
 };
 
 

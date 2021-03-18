@@ -23,3 +23,7 @@ std::ostream & operator<<(std::ostream & os, const Color & c) {
     os << "Color(" << c.r << ", " << c.g << ", " << c.b << ")";
     return os;
 }
+
+json Color::toJSON() {
+    return {{"r", r}, {"g", g}, {"b", b}};
+}

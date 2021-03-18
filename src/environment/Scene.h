@@ -9,7 +9,7 @@
 #include "../include/objects.h"
 #include "../include/environment.h"
 
-class Scene {
+class Scene : public Serializable {
     public:
         /** The camera in the scene */
         Camera camera;
@@ -32,6 +32,16 @@ class Scene {
     public:
         Scene(Camera cam, Light light, Color bg) : camera(cam), light(light), background(bg) {};
         Scene(Camera cam, Light light) : Scene(cam, light, Color(100)) {};
+        Scene(json j) : Scene(j["camera"], j["light"], j["background"]) {
+            for (auto object : j["objects"]) {
+                addObject(Object::fromJSON(object));
+            }
+            brightness = j["brightness"];
+            depth = j["depth"];
+        };
+        Scene(std::string s) : Scene(json::parse(s)) {};
+
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Scene, camera, /*objects,*/ light, background, brightness, depth);
 
         /**
          * Render the scene and save the picture
@@ -54,6 +64,8 @@ class Scene {
          * @param obj pointer to the object to add in the scene
          */
         void addObject(Object * obj);
+
+        virtual json toJSON() override;
 };
 
 

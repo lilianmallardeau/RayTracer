@@ -16,3 +16,10 @@ std::ostream & operator<<(std::ostream & os, const Ray & ray) {
     os << "Ray(" << ray.origin << ", " << ray.direction << ")";
     return os;
 }
+
+json Ray::toJSON() {
+    return {
+        {"origin", origin.toJSON()},
+        {"direction", direction.toJSON()}
+    };
+}

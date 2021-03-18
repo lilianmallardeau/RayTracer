@@ -19,3 +19,13 @@ Point3D Plane::get_intersect(Ray ray) {
 Vector3D Plane::get_normal(Ray ray) {
     return normal * ray.direction <= 0 ? normal : -normal;
 }
+
+json Plane::toJSON() {
+    json j = Object::toJSON();
+    j.merge_patch({
+        {"object", "plane"},
+        {"point", point.toJSON()},
+        {"normal", normal.toJSON()}
+    });
+    return j;
+}

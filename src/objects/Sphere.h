@@ -14,10 +14,18 @@ class Sphere : public Object {
 
     public:
         Sphere(Point3D center, float radius) : center(center), radius(radius) {};
+        Sphere(json j) : Sphere(j["center"], j["radius"]) {
+            initFromJSON(j);
+        };
+        Sphere(std::string s) : Sphere(json::parse(s)) {};
+
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Sphere, name, matter, center, radius);
 
         bool is_hit(Ray ray) override;
         Point3D get_intersect(Ray ray) override;
         Vector3D get_normal(Ray ray) override;
+
+        json toJSON() override;
 };
 
 

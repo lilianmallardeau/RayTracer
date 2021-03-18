@@ -14,7 +14,7 @@ class Scene;
 /**
  * Base class for objects
  */
-class Object {
+class Object : public Serializable {
     public:
         /** Material of the object */
         Material matter;
@@ -24,6 +24,12 @@ class Object {
 
     public:
         Object() : matter(Material()) {};
+        Object(json j) : matter(j["matter"]), name(j["name"]) {};
+        Object(std::string s) : Object(json::parse(s)) {};
+
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Object, name, matter);
+
+        void initFromJSON(json j);
 
         /**
          * Checks if a ray hit the object
@@ -97,6 +103,19 @@ class Object {
          * @param c new color of the object
          */
         void setColor(Color c);
+
+        /**
+         * Serializes object to JSON
+         * @return the current object as a JSON object
+         */
+        virtual json toJSON() override;
+
+        /**
+         * Builds object from JSON
+         * @param obj the JSON object
+         * @return a pointer to the new created object
+         */
+        static Object* fromJSON(json obj);
 };
 
 

@@ -10,6 +10,7 @@
 #include <iostream>
 #include <ostream>
 #include <list>
+#include "../utils/Serializable.h"
 #include "../utils/Vector3D.h"
 #include "../utils/Color.h"
 #include "../utils/Material.h"

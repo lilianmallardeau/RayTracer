@@ -42,8 +42,16 @@ add_executable(RayTracer
         src/utils/MathTools.h
         src/objects/Cube.cpp
         src/objects/Cube.h
+        src/utils/Serializable.cpp
+        src/utils/Serializable.h
         src/main.cpp)
 
+# PNG++ library
 find_package(PNG REQUIRED)
 include_directories(${PNG_INCLUDE_DIR})
-target_link_libraries(RayTracer ${PNG_LIBRARY})
+
+# JSON library
+set(JSON_BuildTests OFF CACHE INTERNAL "")
+add_subdirectory(src/lib/json)
+
+target_link_libraries(RayTracer ${PNG_LIBRARY} nlohmann_json::nlohmann_json)

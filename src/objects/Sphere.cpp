@@ -31,3 +31,13 @@ Point3D Sphere::get_intersect(Ray ray) {
 Vector3D Sphere::get_normal(Ray ray) {
     return (get_intersect(ray) - center).normalize();
 }
+
+json Sphere::toJSON() {
+    json j = Object::toJSON();
+    j.merge_patch({
+        {"object", "sphere"},
+        {"center", center.toJSON()},
+        {"radius", radius}
+    });
+    return j;
+}

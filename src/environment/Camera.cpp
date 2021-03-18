@@ -48,3 +48,15 @@ std::ostream & operator<<(std::ostream & os, const Camera & cam) {
     os << "Camera(" << cam.position << ", " << cam.direction << ")";
     return os;
 }
+
+json Camera::toJSON() {
+    return {
+        {"position", position.toJSON()},
+        {"direction", direction.toJSON()},
+        {"up", up.toJSON()},
+        {"right", right.toJSON()},
+        {"screen_dist", screen_dist},
+        {"width", width},
+        {"height", height}
+    };
+}

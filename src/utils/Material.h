@@ -5,9 +5,10 @@
 #ifndef RAYTRACER_MATERIAL_H
 #define RAYTRACER_MATERIAL_H
 
+#include "Serializable.h"
 #include "Color.h"
 
-class Material {
+class Material : public Serializable {
     public:
         /** The color of the object */
         Color color;
@@ -25,8 +26,19 @@ class Material {
         Material(unsigned char r, unsigned char g, unsigned char b) : Material(Color(r, g, b)) {};
         Material(unsigned char c, float shininess) : Material(Color(c), shininess) {};
         Material() : Material(Color(255)) {};
+        Material(json j) : Material(Color(j["color"]), j["shininess"]) {
+            alpha = j["alpha"];
+            Ka = j["Ka"];
+            Kd = j["Kd"];
+            Ks = j["Ks"];
+        };
+        Material(std::string s) : Material(json::parse(s)) {};
+
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Material, color, shininess, alpha, Ka, Kd, Ks);
 
         friend std::ostream & operator<<(std::ostream &, const Material &);
+
+        json toJSON() override;
 };
 
 
