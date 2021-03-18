@@ -23,13 +23,13 @@ int main() {
     Sphere sphere(Point3D(2, -2, 2), 2);
     Cube cube(Point3D(-3, 1, 0), Point3D(2.5, 0, 0), Point3D(0, 2.5, 0), Point3D(0, 0, 2.5));
 
-    square1.matter = m;
-    square2.matter = m;
-    square3.matter = m;
-    square4.matter = m;
-    square5.matter = m;
-    sphere.matter = m;
-    cube.matter = m;
+    square1.material = m;
+    square2.material = m;
+    square3.material = m;
+    square4.material = m;
+    square5.material = m;
+    sphere.material = m;
+    cube.material = m;
     sphere.setColor(Color(0, 0, 255));
     sphere.setShininess(0.5);
     cube.setColor(Color(50, 230, 0));

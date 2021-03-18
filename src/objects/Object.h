@@ -24,7 +24,7 @@ enum ObjectType {
 class Object : public Serializable {
     public:
         /** Material of the object */
-        Material matter;
+        Material material;
 
         /** Name of the object */
         std::string name;
@@ -33,11 +33,11 @@ class Object : public Serializable {
         enum ObjectType type;
 
     public:
-        Object() : matter(Material()) {};
-        Object(json j) : matter(j["matter"]), name(j["name"]) {};
+        Object() : material(Material()) {};
+        Object(json j) : material(j["material"]), name(j["name"]) {};
         Object(std::string s) : Object(json::parse(s)) {};
 
-        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Object, name, matter);
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Object, name, material);
 
         void initFromJSON(json j);
 

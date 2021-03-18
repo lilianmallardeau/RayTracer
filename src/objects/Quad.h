@@ -21,7 +21,7 @@ class Quad : public Object {
         };
         Quad(std::string s) : Quad(json::parse(s)) {};
 
-        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Quad, name, matter, origin, width, height);
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Quad, name, material, origin, width, height);
 
         bool is_hit(Ray ray) override;
         Point3D get_intersect(Ray ray) override;

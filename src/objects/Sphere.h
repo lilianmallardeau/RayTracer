@@ -21,7 +21,7 @@ class Sphere : public Object {
         };
         Sphere(std::string s) : Sphere(json::parse(s)) {};
 
-        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Sphere, name, matter, center, radius);
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Sphere, name, material, center, radius);
 
         bool is_hit(Ray ray) override;
         Point3D get_intersect(Ray ray) override;

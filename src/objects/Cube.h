@@ -24,7 +24,7 @@ class Cube : public Object {
         };
         Cube(std::string s) : Cube(json::parse(s)) {};
 
-        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Cube, name, matter, width, height, length);
+        NLOHMANN_DEFINE_TYPE_INTRUSIVE(Cube, name, material, width, height, length);
 
         bool is_hit(Ray ray) override;
         Point3D get_intersect(Ray ray) override;
