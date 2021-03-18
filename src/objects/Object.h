@@ -11,6 +11,13 @@
 
 class Scene;
 
+enum ObjectType {
+    SPHERE,
+    PLANE,
+    QUAD,
+    CUBE
+};
+
 /**
  * Base class for objects
  */
@@ -21,6 +28,9 @@ class Object : public Serializable {
 
         /** Name of the object */
         std::string name;
+
+        /** Type of the object */
+        enum ObjectType type;
 
     public:
         Object() : matter(Material()) {};

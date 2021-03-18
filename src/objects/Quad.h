@@ -13,7 +13,9 @@ class Quad : public Object {
         Vector3D width, height;
 
     public:
-        Quad(Point3D origin, Vector3D width, Vector3D height) : origin(origin), width(width), height(height) {};
+        Quad(Point3D origin, Vector3D width, Vector3D height) : origin(origin), width(width), height(height) {
+            type = ObjectType::QUAD;
+        };
         Quad(json j) : Quad(j["origin"], j["width"], j["height"]) {
             initFromJSON(j);
         };

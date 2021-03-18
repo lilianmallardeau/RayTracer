@@ -14,7 +14,9 @@ class Plane : public Object {
         Vector3D normal;
 
     public:
-        Plane(Point3D point, Vector3D normal) : point(point), normal(normal.normalize()) {};
+        Plane(Point3D point, Vector3D normal) : point(point), normal(normal.normalize()) {
+            type = ObjectType::PLANE;
+        };
         Plane(json j) : Plane(j["point"], j["normal"]) {
             initFromJSON(j);
         };

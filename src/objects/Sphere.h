@@ -13,7 +13,9 @@ class Sphere : public Object {
         float radius;
 
     public:
-        Sphere(Point3D center, float radius) : center(center), radius(radius) {};
+        Sphere(Point3D center, float radius) : center(center), radius(radius) {
+            type = ObjectType::SPHERE;
+        };
         Sphere(json j) : Sphere(j["center"], j["radius"]) {
             initFromJSON(j);
         };
